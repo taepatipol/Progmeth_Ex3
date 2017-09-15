@@ -1,7 +1,10 @@
 package model;
-public class QualityChecker {
+public class QualityChecker implements Worker{
+	private int stressLevel;
 	
-
+	public QualityChecker() {
+		this.stressLevel = 1;
+	}
 	private void sleep(){
 		System.out.println("Zzzzz");
 		try {
@@ -11,6 +14,18 @@ public class QualityChecker {
 			e.printStackTrace();
 		}
 		stressLevel=1;
+	}
+	public void work() {
+		if (this.stressLevel >= 5) {
+			this.sleep();
+		}
+		System.out.println("Checking a product");
+	}
+	public void increaseStress() {
+		this.stressLevel++;
+	}
+	public int getStressLevel() {
+		return this.stressLevel;
 	}
 	
 

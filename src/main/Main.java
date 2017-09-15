@@ -8,18 +8,25 @@ public class Main {
 	/*
 	 * Code here
 	 * */
-	workers;
+	public static ArrayList<Worker> workers = new ArrayList<>();
 	
 	public static void trigger(Worker w){
 		/*
 		 * Code here
 		 * */
+		if (w instanceof QualityChecker) {
+			((QualityChecker) w).increaseStress();
+		}
 	}
 	
 	public static void produce(){
 		/*
 		 * Code here
 		 * */
+		for(Worker w : workers) {
+			w.work();
+			trigger(w);
+		}
 	}
 
 	public static void main(String[] args) {
